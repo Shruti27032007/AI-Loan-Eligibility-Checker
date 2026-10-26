@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finova AI — Loan Eligibility Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+
+  <header class="topbar">
+    <div class="brand"><span class="logo">F</span><span>Finova<span class="accent">AI</span></span></div>
+    <span class="badge">BFSI • Student Project</span>
+  </header>
+
+  <main class="container">
+    <section class="hero glass">
+      <div>
+        <p class="eyebrow">SMART FINANCIAL DECISION SUPPORT</p>
+        <h1>AI Loan <span class="accent">Eligibility</span> Checker</h1>
+        <p class="subtitle">Check demo loan eligibility, estimate EMI, analyse a credit score and get AI-powered financial education in one place.</p>
+      </div>
+      <div class="hero-icon">₹</div>
+    </section>
+
+    <section class="grid">
+      <div class="card glass">
+        <h2>1. Loan Eligibility</h2>
+        <p class="muted">Enter sample financial details.</p>
+        <div class="form-grid">
+          <label>Annual income (₹)<input id="income" type="number" value="500000" min="0"></label>
+          <label>Age<input id="age" type="number" value="22" min="18" max="100"></label>
+          <label>Credit score<input id="credit" type="number" value="750" min="300" max="900"></label>
+          <label>Employment
+            <select id="employment"><option>Salaried</option><option>Self-employed</option><option>Business</option><option>Other</option></select>
+          </label>
+          <label>Loan amount (₹)<input id="loan" type="number" value="300000" min="0"></label>
+          <label>Tenure (years)<input id="tenure" type="number" value="5" min="1" max="30"></label>
+        </div>
+        <button onclick="checkEligibility()">Check Eligibility</button>
+        <div id="eligibilityResult" class="result hidden"></div>
+      </div>
+
+      <div class="card glass">
+        <h2>2. EMI Calculator</h2>
+        <p class="muted">Calculate monthly repayment using the standard EMI formula.</p>
+        <label>Principal (₹)<input id="emiPrincipal" type="number" value="300000"></label>
+        <label>Annual interest rate (%)<input id="emiRate" type="number" value="10" step="0.1"></label>
+        <label>Tenure (years)<input id="emiYears" type="number" value="5"></label>
+        <button onclick="calculateEMI()">Calculate EMI</button>
+        <div id="emiResult" class="result hidden"></div>
+      </div>
+
+      <div class="card glass">
+        <h2>3. Credit Score Analyzer</h2>
+        <p class="muted">Educational interpretation of a score from 300–900.</p>
+        <label>Credit score<input id="creditOnly" type="number" value="750" min="300" max="900"></label>
+        <button onclick="analyzeCredit()">Analyse Score</button>
+        <div id="creditResult" class="result hidden"></div>
+      </div>
+
+      <div class="card glass wide">
+        <div class="row-between">
+          <div><h2>4. AI Financial Tips</h2><p class="muted">General educational guidance based on your sample inputs.</p></div>
+          <span class="ai-pill">CLAUDE AI</span>
+        </div>
+        <button onclick="getAITips()">Generate AI Tips</button>
+        <div id="aiResult" class="result hidden"></div>
+      </div>
+
+      <div class="card glass wide">
+        <div class="row-between">
+          <div><h2>Save Demo Record</h2><p class="muted">Optional Google Sheets integration for project demonstration.</p></div>
+        </div>
+        <button class="secondary" onclick="saveRecord()">Save to Google Sheets</button>
+        <div id="saveResult" class="result hidden"></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>⚠️ Educational prototype only. It does not represent an actual bank's lending decision or financial advice.</p>
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
